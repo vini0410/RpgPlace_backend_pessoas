@@ -1,13 +1,13 @@
 package com.rpg.pessoas.RpgPlacePessoas.adapters.web.dto;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+@JsonNaming(SnakeCaseStrategy.class)
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -15,5 +15,10 @@ import lombok.NoArgsConstructor;
 public class UserDto {
 
     private Long id;
-    private String nome;
+
+    private String name;
+
+    private String email;
+
+    private String password;
 }

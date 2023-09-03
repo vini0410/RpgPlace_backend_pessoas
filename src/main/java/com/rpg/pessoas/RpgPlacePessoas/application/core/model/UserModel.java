@@ -13,10 +13,10 @@ public class UserModel {
 
     private Long id;
 
-    private String nome;
+    private String name;
 
     private String email;
 
-    private String senha;
+    private String password;
 
 }

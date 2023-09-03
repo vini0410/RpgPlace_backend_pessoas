@@ -5,13 +5,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
 public class AddressModel {
 
     private Long id;
 
-    private String rua;
+    private String country;
+
+    private String state;
+
+    private String city;
+
+    private String neighborhood;
+
+    private String street;
+
+    private Long number;
 }

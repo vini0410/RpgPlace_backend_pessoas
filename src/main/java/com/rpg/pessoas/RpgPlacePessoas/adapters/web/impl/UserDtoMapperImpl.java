@@ -6,23 +6,32 @@ import com.rpg.pessoas.RpgPlacePessoas.adapters.web.mapper.UserDtoMapper;
 import com.rpg.pessoas.RpgPlacePessoas.application.core.model.UserModel;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class UserDtoMapperImpl implements UserDtoMapper {
     @Override
-    public List<UserDto> toDtoList(List<UserModel> all) {
-        return new ArrayList<>();
-    }
-
-    @Override
-    public UserDto toDto(UserModel user) {
-        return UserDto.builder().build();
+    public UserDto toDto(UserModel model) {
+        return UserDto.builder()
+                .id(model.getId())
+                .name(model.getName())
+                .email(model.getEmail())
+                .password(model.getPassword())
+                .build();
     }
 
     @Override
     public UserModel toModel(UserDto dto) {
-        return UserModel.builder().build();
+        return UserModel.builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .email(dto.getEmail())
+                .password(dto.getPassword())
+                .build();
+    }
+
+    @Override
+    public List<UserDto> toDtoList(List<UserModel> list) {
+        return list.stream().map(this::toDto).toList();
     }
 }
