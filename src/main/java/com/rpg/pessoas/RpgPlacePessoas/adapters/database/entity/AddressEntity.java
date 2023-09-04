@@ -1,7 +1,11 @@
 package com.rpg.pessoas.RpgPlacePessoas.adapters.database.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
@@ -33,4 +37,9 @@ public class AddressEntity {
 
     @Column(name = "number")
     private Long number;
+
+    @JsonBackReference
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 }

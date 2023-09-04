@@ -1,7 +1,11 @@
 package com.rpg.pessoas.RpgPlacePessoas.adapters.database.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
@@ -24,4 +28,9 @@ public class UserEntity {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @JsonManagedReference
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private AddressEntity address;
 }

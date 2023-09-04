@@ -1,15 +1,20 @@
-package com.rpg.pessoas.RpgPlacePessoas.adapters.database.adap;
+package com.rpg.pessoas.RpgPlacePessoas.adapters.database.impl;
 
 
 import com.rpg.pessoas.RpgPlacePessoas.adapters.database.entity.UserEntity;
+import com.rpg.pessoas.RpgPlacePessoas.adapters.database.mapper.AddressMapper;
 import com.rpg.pessoas.RpgPlacePessoas.adapters.database.mapper.UserMapper;
 import com.rpg.pessoas.RpgPlacePessoas.application.core.model.UserModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class UserAdapter implements UserMapper {
+public class UserMapperImpl implements UserMapper {
+
+    @Autowired
+    private AddressMapper addressMapper;
 
     @Override
     public UserModel toModel(UserEntity entity) {
@@ -18,6 +23,7 @@ public class UserAdapter implements UserMapper {
                 .name(entity.getName())
                 .email(entity.getEmail())
                 .password(entity.getPassword())
+                .address(addressMapper.toModel(entity.getAddress()))
                 .build();
     }
 
@@ -28,6 +34,7 @@ public class UserAdapter implements UserMapper {
                 .name(model.getName())
                 .email(model.getEmail())
                 .password(model.getPassword())
+                .address(addressMapper.toEntity(model.getAddress()))
                 .build();
     }
 

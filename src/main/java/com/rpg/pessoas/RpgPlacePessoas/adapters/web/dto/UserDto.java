@@ -1,5 +1,6 @@
 package com.rpg.pessoas.RpgPlacePessoas.adapters.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
@@ -21,4 +22,7 @@ public class UserDto {
     private String email;
 
     private String password;
+
+    @JsonManagedReference
+    private AddressDto addressDto;
 }

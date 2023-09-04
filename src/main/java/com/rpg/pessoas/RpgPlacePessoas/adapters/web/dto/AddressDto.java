@@ -1,5 +1,6 @@
 package com.rpg.pessoas.RpgPlacePessoas.adapters.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
@@ -27,4 +28,5 @@ public class AddressDto {
     private String street;
 
     private Long number;
+
 }

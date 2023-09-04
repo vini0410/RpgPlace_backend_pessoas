@@ -1,14 +1,16 @@
-package com.rpg.pessoas.RpgPlacePessoas.adapters.database.adap;
+package com.rpg.pessoas.RpgPlacePessoas.adapters.database.impl;
 
 import com.rpg.pessoas.RpgPlacePessoas.adapters.database.entity.AddressEntity;
 import com.rpg.pessoas.RpgPlacePessoas.adapters.database.mapper.AddressMapper;
+import com.rpg.pessoas.RpgPlacePessoas.adapters.database.mapper.UserMapper;
 import com.rpg.pessoas.RpgPlacePessoas.application.core.model.AddressModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class AdressAdapter implements AddressMapper {
+public class AdressMapperImpl implements AddressMapper {
     @Override
     public AddressModel toModel(AddressEntity entity) {
         return AddressModel.builder()
