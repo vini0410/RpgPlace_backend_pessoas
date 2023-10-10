@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class UserMapperImpl implements UserMapper {
@@ -19,27 +20,41 @@ public class UserMapperImpl implements UserMapper {
     @Override
     public UserModel toModel(UserEntity entity) {
         return UserModel.builder()
-                .id(entity.getId())
-                .name(entity.getName())
-                .email(entity.getEmail())
-                .password(entity.getPassword())
-                .address(addressMapper.toModel(entity.getAddress()))
+                .id(validar(entity.getId()))
+                .name(validar(entity.getName()))
+                .email(validar(entity.getEmail()))
+                .password(validar(entity.getPassword()))
+                .address(Objects.isNull(entity.getAddress()) ? null : addressMapper.toModel(entity.getAddress()))
                 .build();
     }
 
     @Override
     public UserEntity toEntity(UserModel model) {
         return UserEntity.builder()
-                .id(model.getId())
-                .name(model.getName())
-                .email(model.getEmail())
-                .password(model.getPassword())
-                .address(addressMapper.toEntity(model.getAddress()))
+                .id(validar(model.getId()))
+                .name(validar(model.getName()))
+                .email(validar(model.getEmail()))
+                .password(validar(model.getPassword()))
+                .address(Objects.isNull(model.getAddress()) ? null : addressMapper.toEntity(model.getAddress()))
                 .build();
     }
 
     @Override
     public List<UserModel> toModelList(List<UserEntity> list) {
         return list.stream().map(this::toModel).toList();
+    }
+
+    private Long validar(Long obj) {
+        if (Objects.isNull(obj)) {
+            return null;
+        }
+        return obj;
+    }
+
+    private String validar(String obj) {
+        if (Objects.isNull(obj)) {
+            return null;
+        }
+        return obj;
     }
 }

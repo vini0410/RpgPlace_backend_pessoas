@@ -25,6 +25,12 @@ public class UserService implements UserPort {
     }
 
     @Override
+    public UserModel findByEmail(String email) {
+        var response = repository.findByEmail(email);
+        return response.map(userEntity -> mapper.toModel(userEntity)).orElse(null);
+    }
+
+    @Override
     public List<UserModel> findAll() {
         return mapper.toModelList(repository.findAll());
     }
@@ -33,4 +39,6 @@ public class UserService implements UserPort {
     public UserModel save(UserModel model) {
         return mapper.toModel(repository.save(mapper.toEntity(model)));
     }
+
+
 }

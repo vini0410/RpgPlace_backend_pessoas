@@ -1,6 +1,5 @@
 package com.rpg.pessoas.RpgPlacePessoas.application.core.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +19,6 @@ public class UserModel {
 
     private String password;
 
-    @JsonManagedReference
     private AddressModel address;
 
 }

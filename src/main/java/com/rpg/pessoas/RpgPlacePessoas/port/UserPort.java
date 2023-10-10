@@ -8,6 +8,8 @@ public interface UserPort {
 
     UserModel findById(Long id);
 
+    UserModel findByEmail(String email);
+
     List<UserModel> findAll();
 
     UserModel save(UserModel model);

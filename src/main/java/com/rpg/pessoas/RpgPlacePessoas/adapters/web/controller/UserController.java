@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 public class UserController {
+
     @Autowired
     private UserUseCase useCase;
     @Autowired
@@ -28,8 +29,10 @@ public class UserController {
         return mapper.toDtoList(useCase.findAll());
     }
 
+
     @PostMapping
     public UserDto addUser(@RequestBody UserDto dto) {
+
         return mapper.toDto(useCase.addUser(mapper.toModel(dto)));
     }
 

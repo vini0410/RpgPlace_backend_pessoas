@@ -16,6 +16,8 @@ public class UserUseCase {
 
     @Autowired
     private UserPort userPort;
+    @Autowired
+    private AddressUseCase addressUseCase;
 
     public UserModel findUser(Long id) {
         var response = userPort.findById(id);
@@ -33,6 +35,10 @@ public class UserUseCase {
 
     public UserModel addUser(UserModel model) {
         validarCampos(model);
+
+//        var address = addressUseCase.addAddress(model.getAddress());
+
+//        model.setAddress(address);
 
         return userPort.save(model);
     }

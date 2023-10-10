@@ -1,11 +1,13 @@
 package com.rpg.pessoas.RpgPlacePessoas.adapters.database.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
+
+import static org.hibernate.annotations.CascadeType.ALL;
 
 @Entity
 @AllArgsConstructor
@@ -17,7 +19,7 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -29,8 +31,8 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @JsonManagedReference
     @OneToOne
+    @Cascade(ALL)
     @JoinColumn(name = "address_id")
     private AddressEntity address;
 }

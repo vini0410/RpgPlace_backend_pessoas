@@ -6,32 +6,33 @@ import com.rpg.pessoas.RpgPlacePessoas.application.core.model.AddressModel;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class AddressDtoMapperImpl implements AddressDtoMapper {
     @Override
     public AddressDto toDto(AddressModel model) {
         return AddressDto.builder()
-                .id(model.getId())
-                .country(model.getCountry())
-                .state(model.getState())
-                .city(model.getCity())
-                .neighborhood(model.getNeighborhood())
-                .street(model.getStreet())
-                .number(model.getNumber())
+                .id(validar(model.getId()))
+                .country(validar(model.getCountry()))
+                .state(validar(model.getState()))
+                .city(validar(model.getCity()))
+                .neighborhood(validar(model.getNeighborhood()))
+                .street(validar(model.getStreet()))
+                .number(validar(model.getNumber()))
                 .build();
     }
 
     @Override
     public AddressModel toModel(AddressDto dto) {
         return AddressModel.builder()
-                .id(dto.getId())
-                .country(dto.getCountry())
-                .state(dto.getState())
-                .city(dto.getCity())
-                .neighborhood(dto.getNeighborhood())
-                .street(dto.getStreet())
-                .number(dto.getNumber())
+                .id(validar(dto.getId()))
+                .country(validar(dto.getCountry()))
+                .state(validar(dto.getState()))
+                .city(validar(dto.getCity()))
+                .neighborhood(validar(dto.getNeighborhood()))
+                .street(validar(dto.getStreet()))
+                .number(validar(dto.getNumber()))
                 .build();
     }
 
@@ -39,4 +40,19 @@ public class AddressDtoMapperImpl implements AddressDtoMapper {
     public List<AddressDto> toDtoList(List<AddressModel> list) {
         return list.stream().map(this::toDto).toList();
     }
+
+    private Long validar(Long obj) {
+        if (Objects.isNull(obj)) {
+            return null;
+        }
+        return obj;
+    }
+
+    private String validar(String obj) {
+        if (Objects.isNull(obj)) {
+            return null;
+        }
+        return obj;
+    }
+
 }
