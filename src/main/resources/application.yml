@@ -20,4 +20,4 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: true
 server:
-  port: 8081
+  port: 8082
